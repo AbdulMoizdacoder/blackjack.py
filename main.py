@@ -14,7 +14,7 @@ face_cards = [
     {"JACK","10"},
     {"ACE","11"}
 ]
-print(face_cards[3])
+
 class Card:
     def __init__(self,value,suit):
         self.value = value
@@ -23,5 +23,22 @@ class Card:
     def print_card(self):
         print(f"you drew a {self.value} of {self.suit}")
 
+class Deck:
+    def __init__(self):
+        self.cards = []
+        self.create()
+
+    def create(self):
+        for s in suits:
+            for r in ranks:
+                self.cards.append(Card(r,s))
+    
+    def show(self):
+        for c in self.cards:
+            c.print_card()
+
+
+deck = Deck()
+deck.show()
 
 
