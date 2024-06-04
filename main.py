@@ -36,18 +36,27 @@ class Deck:
                 self.card_deck.append(Card(r,s))
 
     def show_card(self):
-        self.card_deck.print_card()
+        for i in self.card_deck:
+            i.print_card()
+
+    def get_card(self):
+        card = self.card_deck.pop()
+        return card
     
-class Player:
+class Player():
     def __init__(self):
         self.hand = []
         self.points = 0
     
-    def deal_card(self):
-        pass
+    def deal_card(self, deck):
+        user_card = deck.pop()
+        self.hand.append(user_card)
+        print(self.hand[1])
 
             
                 
 
 deck = Deck()
-deck.show_card
+deck.show_card()
+player = Player()
+player.deal_card(deck)
