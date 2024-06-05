@@ -1,3 +1,5 @@
+#Import
+import random
 #main python loop
 
 # Variables
@@ -41,22 +43,30 @@ class Deck:
 
     def get_card(self):
         card = self.card_deck.pop()
-        return card
+        return card 
+    
+    def shuffle_deck(self):
+        random.shuffle(self.card_deck)
     
 class Player():
     def __init__(self):
-        self.hand = []
-        self.points = 0
+        pass
     
     def deal_card(self, deck):
-        user_card = deck.pop()
+        self.hand = []
+        self.points = 0
+        i = 0
+        user_card = deck.get_card()
         self.hand.append(user_card)
-        print(self.hand[1])
+        self.hand[i].print_card()
+        i+=1
 
             
                 
 
 deck = Deck()
+deck.shuffle_deck()
 deck.show_card()
 player = Player()
+player.deal_card(deck)
 player.deal_card(deck)
