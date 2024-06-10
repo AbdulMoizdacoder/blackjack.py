@@ -58,15 +58,37 @@ class Player():
         i = 0
         user_card = deck.get_card()
         self.hand.append(user_card)
+        if user_card ==  "KING" or "QUEEN" or "JACK":
+            self.points +=10
+        else:
+            self.points += user_card.value
+
         self.hand[i].print_card()
-        i+=1
+        i += 1
+        
+    
+    def print_points(self):
+        print(f"your points are {self.points}")
+
+class Game():
+    def __init__(self):
+        pass
+
+    def check_winner(self):
+           #check for winner and if there are any busts
+        if player.points > 21:
+            Game().End()
+        elif computer.points > 21:
+            pass
 
             
                 
 
 deck = Deck()
 deck.shuffle_deck()
-deck.show_card()
 player = Player()
+computer = Player()
 player.deal_card(deck)
-player.deal_card(deck)
+player.print_points()
+computer.deal_card(deck)
+computer.print_points()
