@@ -24,6 +24,7 @@ class Deck:
         for i in range(3):
             self.build_deck()
             i+=1
+        self.shuffle_deck()
 
     def build_deck(self):
         for s in suits:
@@ -40,20 +41,14 @@ class Deck:
 class Player():
     def __init__(self):
         pass
-    
-    def deal_card(self, deck):
+        
+    def draw(self,times,deck): 
         self.hand = []
-        user_card = deck.get_card()
-        self.hand.append(user_card)
-
-class Computer():
-    def __init__(self):
-        pass
-
-class Deal():
-    def __init__(self):
-            pass
-   
+        for i in range(times):
+            user_card = deck.get_card()
+            self.hand.append(user_card)
+            self.hand[-1].print_card()
+            i +=1
 
 class Game():
     def __init__(self):
@@ -62,22 +57,19 @@ class Game():
     computer = Player()
     deck = Deck()
 
-    loop = True
+    loop = False
+    print(f"\nWelcome to BlackJack!")
+    user_start_input = input(f"\nDo you want to play (y/n)?")
+    if user_start_input == "n":
+        print("goodbye!")
+    elif user_start_input == "y":   
+        loop=True
     while loop:
-        print(f"\nWelcome to BlackJack!")
-        user_start_input = input(f"\nDo you want to play (y/n)?")
-        if user_start_input == "n":
-            print("goodbye!")
-        elif user_start_input == "y":   
-            #draw cards for player
-            deck.shuffle_deck()
             print(f"you drew")
-            player.deal_card(deck)
-            player.deal_card(deck)
-            player.print_card(deck)
+            player.draw(2,deck)
             #draw card for computer
             print("\ndealer draws one card")
-            computer.deal_card(deck)
+            computer.draw(1,deck)
             
 
             
